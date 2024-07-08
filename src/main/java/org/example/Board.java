@@ -5,13 +5,10 @@ public class Board {
 
     public Board() {
         cells = new char[3][3];
-
     }
 
     public void clear() {
-       cells = new char[3][3];
-
-
+        cells = new char[3][3];
     }
 
     public void print() {

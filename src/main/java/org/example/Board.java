@@ -7,7 +7,7 @@ public class Board {
     }
 
     public boolean isCellEmpty(int x, int y){
-        return false
+        return false;
     }
 
     public void place (int x, int y, char c){

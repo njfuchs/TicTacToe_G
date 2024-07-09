@@ -47,7 +47,7 @@ public class TestUnitTestBoard {
     }
     @Test
     public void placeTestO(){
-       assertFalse(board.isCellEmpty(0,0));
+        assertFalse(board.isCellEmpty(0,0));
     }
 
     @Test

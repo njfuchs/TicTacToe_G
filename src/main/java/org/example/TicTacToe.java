@@ -25,7 +25,7 @@ public class TicTacToe {
         sc.close();
     }
     public void placeO (){
-        Scanner sc = new Scanner();
+        Scanner sc = new Scanner(System.in);
         System.out.println("Player O: wich row? 0, 1 or 2");
         int r = sc.nextInt();
         System.out.println("Player O: wich column? 0, 1 or 2");

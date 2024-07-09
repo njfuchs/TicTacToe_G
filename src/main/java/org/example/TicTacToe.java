@@ -39,7 +39,8 @@ public class TicTacToe {
                     board.print();
                 }
                 if (board.hasWinner()) {
-                    System.out.println("Es gibt einen Gewinner das Spiel ist vorbei,  Neues Spiel starten? 1 = Ja 0 = nein");
+                    System.out.println("Es gibt einen Gewinner das Spiel ist vorbei,  Neues Spiel starten? " +
+                            "1 = Ja 0 = nein");
                     if (sc.nextInt()==1){
                         s = true;
                     }else{

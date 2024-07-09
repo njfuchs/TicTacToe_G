@@ -108,7 +108,29 @@ public class TestUnitTestBoard {
         assertFalse(board.isFull());
     }
     @Test
-    public void winnerTestStraight(){
+    public void winnerTestStraightRows(){
+        board = new Board();
+        assertFalse(board.hasWinner());
+        board.place(0,0,'X');
+        board.place(1,0,'X');
+        board.place(2,0,'X');
+        assertTrue(board.hasWinner());
+        board = new Board();
+        assertFalse(board.hasWinner());
+        board.place(0,1,'X');
+        board.place(1,1,'X');
+        board.place(2,1,'X');
+        assertTrue(board.hasWinner());
+        board = new Board();
+        assertFalse(board.hasWinner());
+        board.place(0,2,'X');
+        board.place(1,2,'X');
+        board.place(2,2,'X');
+        assertTrue(board.hasWinner());
+    }
+
+    @Test
+    public void winnerTestStraightColumns(){
         board = new Board();
         assertFalse(board.hasWinner());
         board.place(0,0,'X');
@@ -116,28 +138,15 @@ public class TestUnitTestBoard {
         board.place(0,2,'X');
         assertTrue(board.hasWinner());
         board = new Board();
+        assertFalse(board.hasWinner());
         board.place(1,0,'X');
         board.place(1,1,'X');
         board.place(1,2,'X');
         assertTrue(board.hasWinner());
         board = new Board();
+        assertFalse(board.hasWinner());
         board.place(2,0,'X');
         board.place(2,1,'X');
-        board.place(2,2,'X');
-        assertTrue(board.hasWinner());
-        board = new Board();
-        board.place(0,0,'X');
-        board.place(1,0,'X');
-        board.place(2,0,'X');
-        assertTrue(board.hasWinner());
-        board = new Board();
-        board.place(0,1,'X');
-        board.place(1,1,'X');
-        board.place(2,1,'X');
-        assertTrue(board.hasWinner());
-        board = new Board();
-        board.place(0,2,'X');
-        board.place(1,2,'X');
         board.place(2,2,'X');
         assertTrue(board.hasWinner());
     }

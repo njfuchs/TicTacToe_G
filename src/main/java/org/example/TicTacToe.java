@@ -36,6 +36,13 @@ public class TicTacToe {
                 b = true;
                 board.print();
             }
+            if (board.hasWinner()){
+                System.out.println("Es gibt einen Gewinner das Spiel ist vorbei");
+                i = 10;
+            }
+        }
+        if (!board.hasWinner()){
+            System.out.println("Es gibt keinen Gewinner! Unentschieden");
         }
     }
 

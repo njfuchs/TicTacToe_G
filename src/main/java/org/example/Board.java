@@ -19,4 +19,23 @@ public class Board {
             System.out.println();
         }
     }
+    public boolean isCellEmpty (int x, int y){
+        return cells[x][y] == 0;
+    }
+
+    public void place (int x, int y, char pl){
+        cells[x][y] = pl;
+    }
+
+    public boolean isFull(){
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if(cells[i][j]==0){
+                    return false;
+                }
+            }
+
+        }
+        return true;
+    }
 }

@@ -13,10 +13,32 @@ public class TestUnitTestBoard {
     }
 
     @Test
-    public void cellEmptyTest(){
-        assertTrue(board.isCellEmpty(0,0));
-        board.place(0,0,'O');
-        assertFalse(board.isCellEmpty(0,0));
+    public void cellEmptyTestEmpty(){
+        board = new Board();
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                assertTrue(board.isCellEmpty(i,j));
+            }
+        }
+    }
+
+    @Test
+    public void cellEmptyTestFull(){
+        board.place(0,0,'X');
+        board.place(0,1,'X');
+        board.place(0,2,'X');
+        board.place(1,0,'X');
+        board.place(1,1,'X');
+        board.place(1,2,'X');
+        board.place(2,0,'X');
+        board.place(2,1,'X');
+        board.place(2,2,'X');
+
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                assertFalse(board.isCellEmpty(i,j));
+            }
+        }
     }
 
     @Test
@@ -26,9 +48,14 @@ public class TestUnitTestBoard {
     }
 
     @Test
-    public void isfullTest(){
+    public void placeTestotherPos(){
+        board.place(2,2,'X');
+        assertFalse(board.isCellEmpty(2,2));
+    }
+
+    @Test
+    public void isfullTestFull(){
         board = new Board();
-        assertFalse(board.isFull());
         board.place(0,0,'X');
         board.place(0,1,'X');
         board.place(0,2,'X');
@@ -42,8 +69,125 @@ public class TestUnitTestBoard {
     }
 
     @Test
-    public void clearTest(){
+    public void isFullTestNotFull(){
         board.clear();
-        assertTrue(board.isFull());
+        board.place(0,1,'X');
+        board.place(0,2,'O');
+        board.place(1,0,'X');
+        board.place(1,1,'O');
+        board.place(1,2,'X');
+        board.place(2,0,'O');
+        board.place(2,1,'X');
+        assertFalse(board.isFull());
     }
+
+    @Test
+    public void clearTestFromFull(){
+        board = new Board();
+        board.place(0,0,'X');
+        board.place(0,1,'X');
+        board.place(0,2,'X');
+        board.place(1,0,'X');
+        board.place(1,1,'X');
+        board.place(1,2,'X');
+        board.place(2,0,'X');
+        board.place(2,1,'X');
+        board.place(2,2,'X');
+        assertTrue(board.isFull());
+        board.clear();
+        assertFalse(board.isFull());
+    }
+    @Test
+    public void clearTestFromNotFull(){
+        board = new Board();
+        board.place(0,0,'X');
+        board.place(0,1,'X');
+        board.place(0,2,'X');
+        board.place(1,0,'X');
+        board.place(1,1,'X');
+        board.place(1,2,'X');
+        board.place(2,0,'X');
+        board.clear();
+        assertFalse(board.isFull());
+    }
+    @Test
+    public void winnerTestStraightRows(){
+        board = new Board();
+        assertFalse(board.hasWinner());
+        board.place(0,0,'X');
+        board.place(1,0,'X');
+        board.place(2,0,'X');
+        assertTrue(board.hasWinner());
+        board = new Board();
+        assertFalse(board.hasWinner());
+        board.place(0,1,'X');
+        board.place(1,1,'X');
+        board.place(2,1,'X');
+        assertTrue(board.hasWinner());
+        board = new Board();
+        assertFalse(board.hasWinner());
+        board.place(0,2,'X');
+        board.place(1,2,'X');
+        board.place(2,2,'X');
+        assertTrue(board.hasWinner());
+    }
+
+    @Test
+    public void winnerTestStraightColumns(){
+        board = new Board();
+        assertFalse(board.hasWinner());
+        board.place(0,0,'X');
+        board.place(0,1,'X');
+        board.place(0,2,'X');
+        assertTrue(board.hasWinner());
+        board = new Board();
+        assertFalse(board.hasWinner());
+        board.place(1,0,'X');
+        board.place(1,1,'X');
+        board.place(1,2,'X');
+        assertTrue(board.hasWinner());
+        board = new Board();
+        assertFalse(board.hasWinner());
+        board.place(2,0,'X');
+        board.place(2,1,'X');
+        board.place(2,2,'X');
+        assertTrue(board.hasWinner());
+    }
+    @Test
+    public void winnerTestNoWinner(){
+        board = new Board();
+        board.place(0,0,'X');
+        assertFalse(board.hasWinner());
+        board.place(0,1,'X');
+        assertFalse(board.hasWinner());
+        board.place(0,2,'O');
+        assertFalse(board.hasWinner());
+        board.place(1,0,'O');
+        assertFalse(board.hasWinner());
+        board.place(1,1,'X');
+        assertFalse(board.hasWinner());
+        board.place(1,2,'X');
+        assertFalse(board.hasWinner());
+        board.place(2,0,'X');
+        assertFalse(board.hasWinner());
+        board.place(2,1,'O');
+        assertFalse(board.hasWinner());
+        board.place(2,2,'=');
+        assertFalse(board.hasWinner());
+    }
+    @Test
+    public void winnerTestDiagonals(){
+        board = new Board();
+        board.place(0,0,'X');
+        board.place(1,1,'X');
+        board.place(2,2,'X');
+        assertTrue(board.hasWinner());
+        board = new Board();
+        board.place(0,2,'X');
+        board.place(1,1,'X');
+        board.place(2,0,'X');
+        assertTrue(board.hasWinner());
+    }
+
+
 }
